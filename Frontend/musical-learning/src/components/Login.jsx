@@ -1,39 +1,28 @@
 import {  useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import DocumentTypesList from "./DocumentTypesList";
+
 function Login() {
-   
-    const [email, setEmail] = useState("");
+    const [documentNumber, setDocumentNumber] = useState("");
+    const [documentType, setDocumentType] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
     async function login(event) {
         event.preventDefault();
         try {
-          await axios.post("http://localhost:8085/api/v1/employee/login", {
-            email: email,
+          await axios.post("http://localhost:8085/api/v1/user/login", {
+            documentType: documentType,
+            documentNumber: documentNumber,
             password: password,
-            }).then((res) => 
-            {
-             console.log(res.data);
-             
-             if (res.data.message == "Email not exits") 
-             {
-               alert("Email not exits");
-             } 
-             else if(res.data.message == "Login Success")
-             { 
-                
+            }).then(({ data }) => {
+              if(data.message === "Login Success"){
                 navigate('/home');
-             } 
-              else 
-             { 
-                alert("Incorrect Email and Password not match");
-             }
-          }, fail => {
-           console.error(fail); // Error!
-  });
+              }else{
+                alert("Incorrect credentials not match");
+              }
+            });
         }
- 
          catch (err) {
           alert(err);
         }
@@ -50,20 +39,26 @@ function Login() {
              <div class="col-sm-6">
  
             <form>
+        <div class="form-group d-flex flex-column">
+          <label>Document Type</label>
+          <select name="documentType" onChange={(event) => {setDocumentType(event.target.value);}}>
+            <option value="">Select</option>
+            <DocumentTypesList />
+          </select>
+        </div>
         <div class="form-group">
-          <label>Email</label>
-          <input type="email"  class="form-control" id="email" placeholder="Enter Name"
+          <label>Document number</label>
+          <input type="text"  class="form-control" id="documentNumber" placeholder="Enter Document Number"
           
-          value={email}
+          value={documentNumber}
           onChange={(event) => {
-            setEmail(event.target.value);
+            setDocumentNumber(event.target.value);
           }}
-          
           />
         </div>
         <div class="form-group">
             <label>password</label>
-            <input type="password"  class="form-control" id="password" placeholder="Enter Fee"
+            <input type="password"  class="form-control" id="password" placeholder="Enter Password"
             
             value={password}
             onChange={(event) => {

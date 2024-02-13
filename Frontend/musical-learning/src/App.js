@@ -1,27 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
-import { Col, Container, Row } from 'reactstrap';
-import DocumentTypesList from './DocumentTypesList';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import Register from './components/Register';
+import Login from './components/Login';
+import Home from './components/Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
-  const [documentTypes, setDocumentTypes] = useState([]);
-  const cargarTareas = () => {
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit=10&offset=0')
-    .then((response)=>{console.log(response.data.results)
-      setDocumentTypes(response.data.results)});
-  }
-  useEffect(cargarTareas, [])
   return (
     <>
-      <Container>
-        <Row>
-          <Col>
-            <DocumentTypesList documentTypes={documentTypes}/>
-          </Col>
-        </Row>
-      </Container>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/home" element= { <Home/>} />
+          <Route path="/register" element= { <Register/>} />
+          <Route path="/" element= { <Login/>} />
+        </Routes>
+      </BrowserRouter>
+      
+    </div>
     </>
   );
 }

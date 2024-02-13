@@ -21,21 +21,17 @@ public class UserIMPL implements UserService {
     private PasswordEncoder passwordEncoder;
     @Override
     public String addUser(UserDTO userDTO) {
-
-            User user = new User(
-
-                    userDTO.getUserid(),
-                    userDTO.getDocumentNumber(),
-                    userDTO.getDocumentType(),
-                    userDTO.getEmail(),
-
-                    this.passwordEncoder.encode(userDTO.getPassword())
-            );
+        User user = new User(
+            userDTO.getUserid(),
+            userDTO.getDocumentNumber(),
+            userDTO.getDocumentType(),
+            userDTO.getEmail(),
+            this.passwordEncoder.encode(userDTO.getPassword())
+        );
 
         userRepo.save(user);
-
-            return user.getDocumentType() + user.getDocumentNumber();
-        }
+        return user.getDocumentType() + user.getDocumentNumber();
+    }
 
     @Override
     public LoginResponse loginUser(LoginDTO loginDTO) {
@@ -60,7 +56,7 @@ public class UserIMPL implements UserService {
                 return new LoginResponse("password Not Match", false);
             }
         }else {
-            return new LoginResponse("Document type and document number relation doesn't exits", false);
+            return new LoginResponse("Document type and document number relation doesn't exit", false);
         }
     }
 

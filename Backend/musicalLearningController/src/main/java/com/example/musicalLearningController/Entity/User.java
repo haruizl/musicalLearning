@@ -2,7 +2,7 @@ package com.example.musicalLearningController.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
     @Id
     @Column(name="user_id", length = 45)
