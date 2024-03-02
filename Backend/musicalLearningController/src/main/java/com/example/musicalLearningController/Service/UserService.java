@@ -4,7 +4,7 @@ import com.example.musicalLearningController.Dto.LoginDTO;
 import com.example.musicalLearningController.response.LoginResponse;
 
 public interface UserService {
-    String addUser(UserDTO userDTO);
+    LoginResponse addUser(UserDTO userDTO);
 
     LoginResponse loginUser(LoginDTO loginDTO);
 }

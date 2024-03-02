@@ -2,15 +2,15 @@ package com.example.musicalLearningController.Dto;
 
 public class UserDTO {
     private int userid;
-    private String documentNumber;
-    private String documentType;
+    private String name;
+    private String lastname;
     private String email;
     private String password;
 
-    public UserDTO(int userid, String documentNumber, String documentType, String email, String password) {
+    public UserDTO(int userid, String name, String lastname, String email, String password) {
         this.userid = userid;
-        this.documentNumber = documentNumber;
-        this.documentType = documentType;
+        this.name = name;
+        this.lastname = lastname;
         this.email = email;
         this.password = password;
     }
@@ -23,20 +23,20 @@ public class UserDTO {
         this.userid = userid;
     }
 
-    public String getDocumentNumber() {
-        return documentNumber;
+    public String getName() {
+        return name;
     }
 
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDocumentType() {
-        return documentType;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setDocumentType(String documentType) {
-        this.documentType = documentType;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {
@@ -59,8 +59,8 @@ public class UserDTO {
     public String toString() {
         return "UserDTO{" +
                 "userid=" + userid +
-                ", documentNumber='" + documentNumber + '\'' +
-                ", documentType='" + documentType + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

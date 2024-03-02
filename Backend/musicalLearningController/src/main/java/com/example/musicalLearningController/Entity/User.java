@@ -9,22 +9,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userid;
 
-    @Column(name="document_number", length = 255)
-    private String documentNumber;
 
-    @Column(name="document_type", length = 255)
-    private String documentType;
+    @Column(name="name", length = 150)
+    private String name;
 
-    @Column(name="email", length = 255)
+    @Column(name="lastname", length = 150)
+    private String lastname;
+    @Column(name="email", length = 60)
     private String email;
 
     @Column(name="password", length = 255)
     private String password;
 
-    public User(int userid, String documentNumber, String documentType, String email, String password) {
+    public User(int userid, String name, String lastname, String email, String password) {
         this.userid = userid;
-        this.documentNumber = documentNumber;
-        this.documentType = documentType;
+        this.name = name;
+        this.lastname = lastname;
         this.email = email;
         this.password = password;
     }
@@ -33,20 +33,20 @@ public class User {
 
     }
 
-    public String getDocumentNumber() {
-        return documentNumber;
+    public String getName() {
+        return name;
     }
 
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDocumentType() {
-        return documentType;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setDocumentType(String documentType) {
-        this.documentType = documentType;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {
@@ -69,8 +69,8 @@ public class User {
     public String toString() {
         return "User{" +
                 "userid=" + userid +
-                ", documentNumber='" + documentNumber + '\'' +
-                ", documentType='" + documentType + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

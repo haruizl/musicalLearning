@@ -10,6 +10,6 @@ import java.util.Optional;
 @EnableJpaRepositories
 @Repository
 public interface UserRepo extends JpaRepository<User,Integer>{
-    Optional<User> findOneByDocumentNumberAndDocumentTypeAndPassword(String documentNumber, String documentType, String password);
-    User findByDocumentNumberAndDocumentType(String documentNumber, String documentType);
+    Optional<User> findOneByEmailAndPassword(String email, String password);
+    User findByEmail(String email);
 }
